@@ -1,0 +1,441 @@
+/* Configurações da Fonte do Site */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap');
+
+/* Configurações das Cores */
+:root {
+  --cor1: #0D2039;
+  --cor2: #F7E7CE;
+  --cor3: #000000;
+  --cor4: #ffffff;
+  --cor5: #ccc;
+  --cor6: #333;
+}
+
+/* Configurações dos Navegadores */
+* {
+  font-family: 'ubuntu', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Formatação do Body */
+body {
+  background-color: var(--cor2);
+  height: 100vh;
+}
+
+header {
+  max-width: 95%;
+  height: auto;
+  margin: 0 auto;
+  background-color: var(--cor1);
+  text-align: center;
+  border-radius: 0px 0px 12px 12px;
+  padding-top: 1rem;
+  box-shadow: 0px 4px 3px var(--cor3);
+}
+
+nav li {
+  display: inline-block;
+  margin: 2rem 1rem;
+}
+
+nav a {
+  color: var(--cor4);
+}
+
+nav a:hover {
+  color: var(--cor2);
+  border-bottom: 4px solid;
+}
+
+/* CONFIGURAÇÕES DO MAIN */
+main {
+  width: 100%;
+  min-width: 320px;
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 1rem;
+  height: calc(100vh - 80px);
+}
+
+/* CONFIGURAÇÕES DO BANNER */
+.banner {
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  overflow: hidden;
+  
+}
+
+.banner img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 95%;
+  max-height: 95%;
+  margin: 2rem 1rem;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  object-fit: contain;
+  border: 1px solid var(--cor2);
+  border-radius: 10px;
+}
+
+.banner img.active {
+  opacity: 1;
+}
+
+.cycle-slideshow img {
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* FORMATAÇÃO DOS CARDS HOTEIS */
+.cards {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding-top: 1rem;
+  padding-inline-end: 1rem;
+}
+
+.hoteis {
+  width: 30%;
+  margin-bottom: 20px;
+  border: 1px solid var(--cor5);
+  border-radius: 5px;
+  padding: 5px;
+  padding-top: 1rem;
+  background-color: var(--cor1);
+  box-shadow: 0px 4px 3px var(--cor3); /* se eu quiser tirar a sombra dos cards */
+}
+
+.hoteis img {
+  width: 95%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  box-shadow: 0px 4px 3px var(--cor3);
+}
+
+.hoteis h3 {
+  font-size: 1.2em; /* Tamanho da fonte proporcional */
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: var(--cor2);
+}
+
+.hoteis p {
+  font-size: 0.9em; /* Tamanho da fonte proporcional */
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: var(--cor2);
+}
+
+.hoteis a {
+  display: block;
+  text-decoration: none;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: var(--cor2);
+}
+
+/* Configurações das promoções */
+.promocao {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.promocao img {
+  max-width: 95%;
+  max-height: 95%;
+  margin: 2rem 1rem;
+  border: 1px solid var(--cor2);
+  border-radius: 10px;
+}
+
+/* Configurações dos pagamentos */
+.pagamento{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 95%;
+  margin: 1% auto;
+  border: 1px solid var(--cor5);
+  background-color: var(--cor1);
+  border-radius: 12px 12px 12px 12px;
+  padding-top: 1rem;
+  box-shadow: 0px 4px 3px var(--cor3);
+}
+
+.pagamento img {
+  max-width: 60%;
+  max-height: 60%;
+}
+
+.pag{
+  padding: 1%;
+}
+
+.pag h3{
+  color:var(--cor2);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.pag p{
+  color:var(--cor5);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+.pag img{
+  padding-top: 8%;
+
+}
+
+
+/* Estilos do rodapé */
+footer {
+  max-width: 95%;
+  height: auto;
+  margin: 0 auto;
+  background-color: var(--cor1);
+  text-align: center;
+  border-radius: 0px 0px 12px 12px;
+  padding-top: 1rem;
+  box-shadow: 0px 4px 3px var(--cor3);
+}
+
+.rodape {
+  text-align: center;
+}
+
+.rodape ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+.rodape li {
+  display: inline-block;
+  
+  margin-right: 10px;
+}
+
+.rodape a {
+  text-decoration: none;
+  color: var(--cor2);
+  font-weight: bold;
+}
+
+.rodape p {
+  margin: 5px 0;
+  font-size: 14px;
+  text-decoration: none;
+  font-weight: bold;
+  color: var(--cor4);
+}
+
+
+/*FORMATAÇÃO DA PÁGINA DE CADASTRO*/
+.cadastro {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  background-color: var(--cor2);
+  margin: 2% auto;
+  width: 90%;
+  max-width: 900px;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 50px;
+}
+
+.cad {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.cad h1 {
+  font-size: 24px;
+  text-align: center;
+  color: var(--cor1);
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.cad input[type="text"],
+.cad input[type="email"],
+.cad input[type="password"] {
+  width: 100%;
+  height: 50px;
+  color: var(--cor1);
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+  margin-bottom: 10px;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.cad input[type="submit"] {
+  width: 100%;
+  height: 50px;
+  padding: 1%;
+  background-color: var(--cor1);
+  color: var(--cor2);
+  border: none;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+.cad input[type="submit"]:hover {
+  background-color: green;
+  cursor: pointer;
+}
+
+.cad img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+/*CONFIGURAÇÕES DA PÁGINA DE LOGIN*/
+.login{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: var(--cor2);
+  margin: 2% auto;
+  width: 90%;
+  max-width: 900px;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 50px;
+}
+
+.logar {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logar h1 {
+  font-size: 24px;
+  text-align: center;
+  color: var(--cor1);
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+
+.logar input[type="email"],
+.logar input[type="password"] {
+  width: 100%;
+  height: 50px;
+  color: var(--cor1);
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+  margin-bottom: 10px;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.logar input[type="submit"] {
+  width: 100%;
+  height: 50px;
+  padding: 1%;
+  background-color: var(--cor1);
+  color: var(--cor2);
+  border: none;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+.logar input[type="submit"]:hover {
+  background-color: green;
+  cursor: pointer;
+}
+
+/*FORMATAÇÃO DA AREA DO USUARIO*/
+/* Estilos para a barra superior */
+.barra_top {
+  background-color: var(--cor1);
+  color: var(--cor2);
+  padding: 1.5vw;
+  display: flex;
+  margin: 2% auto;
+  padding: 1% 5%;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%;
+  border-radius: 10px 10px 0 0;
+}
+
+.barra_top h1 {
+  margin: 0;
+  font-size: 2.5vw;
+  font-weight: 700;
+}
+
+/* Estilos para a barra de saída */
+.barra_top a {
+  color: var(--cor2);
+  text-decoration: none;
+  font-size: 2.5vw;
+  transition: color 0.3s ease;
+  border-radius: 10px 10px 0 0;
+  font-weight: 700;
+}
+
+.barra_top a:hover {
+  color: red;
+}
+
+/* Estilos para a seção do usuário */
+.usuario {
+  background-color: var(--cor5);
+  padding: 2vw;
+  text-align: center;
+  margin: -2% auto;
+  font-weight: 700;
+  width: 95%;
+  border-radius: 0 0 10px 10px;
+}
+
+.usuario h2 {
+  color: var(--cor1);
+  margin: 0;
+  font-size: 3vw;
+  font-weight: 700;
+  padding: 2vw;
+}
+
+.usuario p {
+  color: var(--cor1);
+  font-size: 2vw;
+  margin-top: 1vw;
+  font-weight: 700;
+}
