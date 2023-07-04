@@ -8,3 +8,6 @@ function changeImage() {
 }
 
 setInterval(changeImage, 5000); // Altera a imagem a cada 5 segundos (5000 milissegundos)
+
+
+
