@@ -30,9 +30,6 @@ app.post('/entrar', (req, res) => {
     };
 
     bcrypt.compare(senha, cliente.senhaHash).then((result) => {
-      console.log(result)
-      console.log(senha)
-      console.log(email)
         if (result) {
           res.redirect('/usuario');
         } else {
