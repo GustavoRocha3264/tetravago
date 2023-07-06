@@ -65,6 +65,11 @@ app.get("/sobre", function(req, res){
     res.sendFile(__dirname + "/views/sobre.html");
 });
 
+app.get("/admin", function(req, res){
+    res.sendFile(__dirname + "/views/admin/login.html");
+});
+
+
 app.listen(5500, function(){
     console.log("Operating Server at: http://localhost:5500")
 });

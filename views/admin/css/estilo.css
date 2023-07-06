@@ -1,0 +1,172 @@
+
+:root {
+    --cor1: #0D2039;
+    --cor2: #F7E7CE;
+    --cor3: #000000;
+    --cor4: #ffffff;
+    --cor5: #ccc;
+    --cor6: #333;
+    --primary:#0077b6;
+    --secondary:#48cae4;
+    --black:#333;
+    --white:#fff;
+    --box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.1);
+  }
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--cor2);
+}
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--cor2);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1, h2 {
+    text-align: center;
+    color: #333333;
+  }
+  
+  button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #4caf50;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  /* Estilos específicos para checkin_checkout.html */
+  
+  .checkin-checkout-container {
+    margin-top: 40px;
+  }
+  
+  /* Estilos específicos para quartos_ocupados.html */
+  
+  .quartos-ocupados-container {
+    margin-top: 40px;
+  }
+  
+  /* Estilos específicos para o formulário de login */
+  
+  .login-container {
+    max-width: 400px;
+    padding: 40px;
+    background-color: var(--cor2);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 0 auto; 
+  }
+  
+  .login-container h1 {
+    text-align: center;
+    color: #333333;
+  }
+  
+  .login-container label {
+    display: block;
+    margin-bottom: 10px;
+    color: #333333;
+    margin-top: 20px;
+  }
+  
+  .login-container input[type="text"],
+  .login-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    text-align: center;
+  }
+  
+  .login-container input[type="submit"] {
+    display: block;
+    width: 105%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #4caf50;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  
+  /* Estilos específicos para o dashboard */
+  
+  .dashboard-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dashboard-container h1 {
+    text-align: center;
+    color: #333333;
+    font-family: Arial, sans-serif;
+  }
+  
+  .dashboard-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #4caf50;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  /* Estilos específicos para o botao de voltar */
+
+  .dashboard-button.back-button {
+    background-color: var(--cor1);
+    color: var(--cor4);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    box-shadow: var(--box-shadow);
+  }
+  
+  .dashboard-button.back-button:hover {
+    background-color: var(--cor3);
+    color: var(--cor4);
+  }
+  
