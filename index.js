@@ -1,5 +1,9 @@
 const express = require("express");
 const app = express();
+const bodyParser = require('body-parser');
+const bcrypt = require('bcrypt');
+
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static("views"));
 
@@ -13,6 +17,40 @@ app.get("/cadastro", function(req, res){
 
 app.get("/entrar", function(req, res){
     res.sendFile(__dirname + "/views/entrar.html");
+});
+
+app.post('/entrar', (req, res) => {
+  const { email, senha } = req.body;
+
+  if (email && senha) {
+    // Simulação de consulta ao banco de dados
+    const cliente = {
+      email: 'cliente@example.com',
+      senhaHash: '$2b$10$a2E.wdOxTGtJ9v1cbJ9nSeLY28rGM9oneTcd1kaS6a5Mhx4bTInbi' // Senha: 'senha123'
+    };
+
+    bcrypt.compare(senha, cliente.senhaHash).then((result) => {
+      console.log(result)
+      console.log(senha)
+      console.log(email)
+        if (result) {
+          res.redirect('/usuario');
+        } else {
+          res.redirect('/entrar');
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        res.redirect('/entrar');
+      });
+  } else {
+    res.redirect('/entrar');
+  }
+});
+
+// Rota para a página do usuário (usuario.php)
+app.get('/usuario', (req, res) => {
+  res.sendFile(__dirname + "/views/usuario.html");
 });
 
 app.get("/contato", function(req, res){
