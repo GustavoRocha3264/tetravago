@@ -616,7 +616,7 @@ section{
 
 .room .slide .content p{
   font-size: 1.6rem;
-  color: #666;
+  color: var(--black);
   padding: .5rem 0;
   line-height: 1.5;
 }
@@ -686,13 +686,16 @@ section{
 
 .about .row .content h3{
   font-size: 3.5rem;
-  color: var(--primary);
+  color: var(--cor1);
   padding: 2rem 0;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
 .about .row .content p{
   font-size: 1.6rem;
-  color: #666;
+  color: var(--cor3);
   padding: 1rem 0;
   line-height: 1.8;
 }
