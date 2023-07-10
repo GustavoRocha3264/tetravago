@@ -1,20 +1,79 @@
 const express = require("express");
+const session = require("express-session");
 const app = express();
 const bodyParser = require('body-parser');
 const bcrypt = require('bcryptjs');
-const mysql = require('mysql')
+const hashPassword = require ('./encrypter');
+const mysql = require('mysql2')
+
+let connection = mysql.createConnection({
+  "user": "root",
+  "password": "123",
+  "database": "trabalho_hotel",
+  "host": "localhost",
+  "port": 3306
+});
+
+connection.connect((err) => {
+  if (err) {
+    console.error('Error connecting to MySQL database: ', err);
+    return;
+  }
+
+  console.log('Connected to MySQL database');
+});
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.static("views"));
+app.use('/css', express.static(__dirname + '/views/css'));
 
-app.get("/", function(req, res){
-    res.sendFile(__dirname + "/views/index.html");
-});
+app.use('/img', express.static(__dirname + '/views/img'));
+
+app.use('/images', express.static(__dirname + '/views/images'));
+
+app.use('/js', express.static(__dirname + '/views/js'));
+
+app.use(session({secret: 'd321y9831hd10923uhjhnl', resave: true, saveUninitialized: true}))
+
+app.get('/', function(req, res){
+    if(req.session.login){
+      res.redirect('/usuario');
+    }
+    else{
+      res.redirect('/index');
+    }
+})
+
+app.get('/index', function(req, res){
+    res.sendFile(__dirname + '/views/index.html')
+})
 
 app.get("/cadastro", function(req, res){
     res.sendFile(__dirname + "/views/cadastro.html");
 });
+
+app.post("/cadastro", (req, res) =>{
+  const { nome, email, senha } = req.body;
+  if(nome && email && senha){
+    connection.query('SELECT email FROM cliente WHERE email = ?', [email], async (error, results)=>{
+      if(results > 0){
+        console.log('email ja cadastrado');
+      }
+      else{
+        const hashSenha = await bcrypt.hash(senha, 10);
+        connection.query('INSERT INTO cliente (nome, email, senha) VALUES (?, ?, ?)', [nome, email, hashSenha], (error, results) =>{
+          if(error) {return res.status(500).send({error: error})}
+
+          req.session.login = nome;
+          res.redirect('/');
+        })
+      }
+    })
+  }
+  else{
+    res.redirect('/cadastro');
+  }
+})
 
 app.get("/entrar", function(req, res){
     res.sendFile(__dirname + "/views/entrar.html");
@@ -24,29 +83,38 @@ app.post('/entrar', (req, res) => {
   const { email, senha } = req.body;
 
   if (email && senha) {
-    // Simulação de consulta ao banco de dados
-    const cliente = {
-      email: 'cliente@example.com',
-      senhaHash: '$2b$10$a2E.wdOxTGtJ9v1cbJ9nSeLY28rGM9oneTcd1kaS6a5Mhx4bTInbi' // Senha: 'senha123'
-    };
+      connection.query('SELECT * FROM cliente WHERE email = ?', [email], async (error, results)=>{
+        if(error) {return res.status(500).send({error: error})}
 
-    bcrypt.compare(senha, cliente.senhaHash).then((result) => {
-        if (result) {
-          res.redirect('/usuario');
-        } else {
-          res.redirect('/entrar');
+        else{
+
+          if (results.length > 0){
+            const cliente = results[0];
+            const nome = cliente.nome;
+            const senha_bd = cliente.senha;
+
+            if(await bcrypt.compare(senha, senha_bd)){
+              req.session.login = nome;
+              res.redirect('/');
+            }
+            else{
+              res.redirect('/entrar');
+            }
+
+          }
+          else{
+            res.redirect('/entrar')
+            console.log('usuario não encontrado');
+          }
+
         }
+
       })
-      .catch((err) => {
-        console.log(err);
-        res.redirect('/entrar');
-      });
   } else {
     res.redirect('/entrar');
   }
 });
 
-// Rota para a página do usuário (usuario.php)
 app.get('/usuario', (req, res) => {
   res.sendFile(__dirname + "/views/usuario.html");
 });
@@ -56,7 +124,7 @@ app.get("/contato", function(req, res){
 });
 
 app.get("/hoteis", function(req, res){
-    res.sendFile(__dirname + "/views/Hotel/hoteis.html");
+    res.sendFile(__dirname + "/views/hoteis.html");
 });
 
 app.get("/sobre", function(req, res){
