@@ -23,6 +23,10 @@ connection.connect((err) => {
   console.log('Connected to MySQL database');
 });
 
+app.engine('html', require('ejs').renderFile);
+
+app.set('view engine', 'html');
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/css', express.static(__dirname + '/views/css'));
@@ -32,6 +36,8 @@ app.use('/img', express.static(__dirname + '/views/img'));
 app.use('/images', express.static(__dirname + '/views/images'));
 
 app.use('/js', express.static(__dirname + '/views/js'));
+
+// app.use('/admin', express.static(__dirname + '/views/admin'));
 
 app.use(session({secret: 'd321y9831hd10923uhjhnl', resave: true, saveUninitialized: true}))
 
@@ -116,7 +122,12 @@ app.post('/entrar', (req, res) => {
 });
 
 app.get('/usuario', (req, res) => {
-  res.sendFile(__dirname + "/views/usuario.html");
+  if(req.session.login){
+    res.render(__dirname + '/views/usuario', {login: req.session.login});
+  }
+  else{
+    res.redirect('/index');
+  }
 });
 
 app.get("/contato", function(req, res){
