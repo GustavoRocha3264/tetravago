@@ -499,8 +499,7 @@ footer {
 }
 
 
-/* Estilo dos rooms */
-
+/* Estilo dos hoteis */
 html{
   font-size: 75.5%;
   overflow-x: hidden;
@@ -701,89 +700,6 @@ section{
 
 /* end */
 
-/* rooms */
-
-.room .slide{
-  background: var(--cor2);
-  border: .1rem solid rgba(0, 0, 0, 0.2);
-  border-radius: .5rem;
-  box-shadow: var(--cor2);
-  margin-bottom: 4rem;
-}
-
-.room .slide .image{
-  height: 25rem;
-  width: 100%;
-  padding: 1.5rem;
-  overflow: hidden;
-  position: relative;
-}
-
-.room .slide .image img{
-  width: 100%;
-  height: 100%;
-  border-radius: .5rem;
-  object-fit: cover;
-}
-
-.room .slide .image .price{
-  position: absolute;
-  top: 2.5rem; left: 2.5rem;
-  background: var(--cor1);
-  color: var(--cor2);
-  font-size: 1.7rem;
-  padding: .5rem 1rem;
-  border-radius: .5rem;
-  text-transform: lowercase;
-}
-
-/* parte do carrinho do quarto */
-.room .slide .image .fa-shopping-cart{
-  position: absolute;
-  top: 2.5rem; right: 2.5rem;
-  height: 4.5rem;
-  width: 4.5rem;
-  line-height: 4.5rem;
-  text-align: center;
-  font-size: 2rem;
-  background: var(--cor2);
-  color: var(--cor1);
-  border-radius: 50%;
-}
-
-.room .slide .image .fa-shopping-cart:hover{
-  background: var(--cor1);
-  color: var(--cor1);
-}
-
-.room .slide .content{
-  padding: 2rem;
-  padding-top: 0;
-}
-
-.room .slide .content h3{
-  font-size: 2.5rem;
-  color: var(--cor1);
-}
-
-.room .slide .content p{
-  font-size: 1.6rem;
-  color:vAR(--cor6);
-  padding: .5rem 0;
-  line-height: 1.5;
-}
-
-.room .slide .content .stars{
-  padding: 1rem 0;
-}
-
-.room .slide .content .stars .i{
-  font-size: 1.7rem;
-  color: var(--cor1);
-}
-
-/* end */
-
 /* services */
 
 .services .box-container{
@@ -886,6 +802,144 @@ section{
 }
 
 /* end */
+
+
+/* parte dos hoteis */
+.hoteis {
+  text-align: center;
+  max-width: 400px; /* Ajuste o valor conforme necessário */
+  margin: 0 auto; /* Centraliza horizontalmente */
+}
+
+.hoteis img {
+  max-width: 100%;
+  height: auto;
+}
+
+.hoteis h3 {
+  font-size: 1.5rem;
+  margin-top: 10px;
+}
+
+.hoteis p {
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+.hoteis a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: green; /* Cor de fundo do botão */
+  color: #fff; /* Cor do texto do botão */
+  text-decoration: none;
+  font-size: 1rem;
+  margin-top: 10px;
+  border-radius: 20px; /* Valor de arredondamento do botão */
+}
+
+.hoteis a:hover {
+  background-color: #990000; /* Cor de fundo do botão ao passar o mouse */
+}
+
+
+/* end */
+
+/* rooms */
+
+.room {
+  text-align: center;
+}
+
+.room .heading {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.room-slider {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.room-slide {
+  background: var(--cor2);
+  border: 0.1rem solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.5rem;
+  box-shadow: var(--cor2);
+  width: calc(50% - 1rem);
+  margin-bottom: 2rem;
+}
+
+.room-slide .image {
+  height: 15rem;
+  width: 100%;
+  padding: 1rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.room-slide .image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5rem;
+  object-fit: cover;
+}
+
+.room-slide .image .price {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  background: var(--cor1);
+  color: var(--cor2);
+  font-size: 1.3rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.5rem;
+  text-transform: lowercase;
+}
+
+.room-slide .content {
+  padding: 1rem;
+  
+}
+
+.room-slide .content h3 {
+  font-size: 1.8rem;
+  color: var(--cor1);
+}
+
+.room-slide .content p {
+  font-size: 1.4rem;
+  color: var(--cor6);
+  padding: 0.3rem 0;
+  line-height: 1.5;
+}
+
+.room-slide .content .stars {
+  padding: 0.8rem 0;
+}
+
+.room-slide .content .stars .i {
+  font-size: 1.4rem;
+  color: var(--cor1);
+}
+
+.room-slide .content .btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: var(--cor1);
+  color: var(--cor2);
+  text-decoration: none;
+  border-radius: 0.5rem;
+  font-size: 1.4rem;
+  margin-top: 0.5rem;
+}
+
+/* end */
+
+
+
+
 
 /* media queries */
 
