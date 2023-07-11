@@ -37,7 +37,7 @@ app.use('/images', express.static(__dirname + '/views/images'));
 
 app.use('/js', express.static(__dirname + '/views/js'));
 
-// app.use('/admin', express.static(__dirname + '/views/admin'));
+app.use('/admin', express.static(__dirname + '/views/admin'));
 
 app.use(session({secret: 'd321y9831hd10923uhjhnl', resave: true, saveUninitialized: true}))
 
@@ -145,6 +145,7 @@ app.get("/sobre", function(req, res){
 app.get("/admin", function(req, res){
     res.sendFile(__dirname + "/views/admin/login.html");
 });
+
 
 app.listen(5500, function(){
     console.log("Operating Server at: http://localhost:5500")

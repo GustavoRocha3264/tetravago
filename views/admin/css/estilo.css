@@ -66,6 +66,11 @@ body {
   .checkin-checkout-container {
     margin-top: 40px;
   }
+  /* Estilos para o botão de descartar */
+  button[name^="descartar"] {
+    background-color: red;
+    color: white;
+  }
   
   /* Estilos específicos para quartos_ocupados.html */
   
