@@ -70,7 +70,7 @@ app.post("/cadastro", (req, res) =>{
         connection.query('INSERT INTO cliente (nome, email, senha) VALUES (?, ?, ?)', [nome, email, hashSenha], (error, results) =>{
           if(error) {return res.status(500).send({error: error})}
 
-          req.session.login = nome;
+          req.session.login = email;
           res.redirect('/');
         })
       }
@@ -96,11 +96,10 @@ app.post('/entrar', (req, res) => {
 
           if (results.length > 0){
             const cliente = results[0];
-            const nome = cliente.nome;
             const senha_bd = cliente.senha;
 
             if(await bcrypt.compare(senha, senha_bd)){
-              req.session.login = nome;
+              req.session.login = email;
               res.redirect('/');
             }
             else{
@@ -123,7 +122,14 @@ app.post('/entrar', (req, res) => {
 
 app.get('/usuario', (req, res) => {
   if(req.session.login){
-    res.render(__dirname + '/views/usuario', {login: req.session.login});
+    connection.query('SELECT * FROM cliente WHERE email = ?', [req.session.login], (error, results) =>{
+      if(error) {return res.status(500).send({error: error})}
+
+      if (results.length > 0){
+        const nome = results[0].nome;
+        res.render(__dirname + '/views/usuario', {login: nome});
+      }
+    })
   }
   else{
     res.redirect('/index');
@@ -135,8 +141,40 @@ app.get("/contato", function(req, res){
 });
 
 app.get("/hoteis", function(req, res){
-    res.sendFile(__dirname + "/views/hoteis.html");
+    if(req.session.login){
+      res.sendFile(__dirname + "/views/hoteis.html");
+    }
+    else{
+      res.redirect('/entrar');
+    }
 });
+
+app.get('/reserva1', function(req, res){
+  if(req.session.login){
+    res.sendFile(__dirname + "/views/vilamar1.html");
+  }
+  else{
+    res.redirect('/');
+  }
+})
+
+app.get('/reserva2', function(req, res){
+  if(req.session.login){
+    res.sendFile(__dirname + "/views/vilamar2.html");
+  }
+  else{
+    res.redirect('/');
+  }
+})
+
+app.get('/reserva3', function(req, res){
+  if(req.session.login){
+    res.sendFile(__dirname + "/views/vilamar3.html");
+  }
+  else{
+    res.redirect('/');
+  }
+})
 
 app.get("/sobre", function(req, res){
     res.sendFile(__dirname + "/views/sobre.html");
