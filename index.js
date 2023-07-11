@@ -3,8 +3,10 @@ const session = require("express-session");
 const app = express();
 const bodyParser = require('body-parser');
 const bcrypt = require('bcryptjs');
-const hashPassword = require ('./encrypter');
 const mysql = require('mysql2')
+const compareDates = require('./dateUtils');
+const generateUniqueReservationId = require('./reservationUtils');
+const createReservation = require('./reservationService');
 
 let connection = mysql.createConnection({
   "user": "root",
@@ -37,7 +39,7 @@ app.use('/images', express.static(__dirname + '/views/images'));
 
 app.use('/js', express.static(__dirname + '/views/js'));
 
-// app.use('/admin', express.static(__dirname + '/views/admin'));
+app.use('/admin', express.static(__dirname + '/views/admin'));
 
 app.use(session({secret: 'd321y9831hd10923uhjhnl', resave: true, saveUninitialized: true}))
 
@@ -157,6 +159,23 @@ app.get('/reserva1', function(req, res){
     res.redirect('/');
   }
 })
+
+app.post('/reserva1', async function(req, res) {
+  const checkIn = req.body.checkIn;
+  const checkOut = req.body.checkOut;
+
+  if(compareDates(checkIn, checkOut)){
+    try {
+      const reservationID = await generateUniqueReservationId(connection);
+  
+      await createReservation(connection, reservationID, "pendente", checkIn, checkOut, req.session.login);
+      res.send('Reservation created successfully.');
+    } catch (error) {
+      console.error('Error creating reservation:', error);
+      res.status(500).send('Error creating reservation.');
+    }
+  }
+});
 
 app.get('/reserva2', function(req, res){
   if(req.session.login){
