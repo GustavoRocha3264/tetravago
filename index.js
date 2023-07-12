@@ -10,11 +10,11 @@ const createReservation = require('./reservationService');
 const createHTML = require('./reservaUI');
 
 let connection = mysql.createConnection({
-  "user": "root",
-  "password": "123",
-  "database": "trabalho_hotel",
-  "host": "localhost",
-  "port": 3306
+  "user": "user_name",
+  "password": "password",
+  "database": "database",
+  "host": "host_name",
+  "port": "port"
 });
 
 connection.connect((err) => {
