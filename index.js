@@ -3,10 +3,11 @@ const session = require("express-session");
 const app = express();
 const bodyParser = require('body-parser');
 const bcrypt = require('bcryptjs');
-const mysql = require('mysql2')
+const mysql = require('mysql2');
 const compareDates = require('./dateUtils');
 const generateUniqueReservationId = require('./reservationUtils');
 const createReservation = require('./reservationService');
+const createHTML = require('./reservaUI');
 
 let connection = mysql.createConnection({
   "user": "root",
@@ -134,7 +135,6 @@ app.get('/usuario', (req, res) => {
         res.render(__dirname + '/views/usuario', {login: nome});
       }
     })
-    connection.query('SELECT')
   }
   else{
     res.redirect('/entrar');
@@ -238,6 +238,13 @@ app.get("/admin", function(req, res){
     res.sendFile(__dirname + "/views/admin/login.html");
 });
 
+app.get("/reservas", function(req, res){
+  createHTML(connection).then((htmlString) => {
+    res.send(htmlString);
+  }).catch((error) => {
+    console.error('Erro ao criar HTML:', error);
+  });
+})
 
 app.listen(5500, function(){
     console.log("Operating Server at: http://localhost:5500")
