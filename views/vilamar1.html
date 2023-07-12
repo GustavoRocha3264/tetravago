@@ -41,7 +41,7 @@
 <body>
 
    <!-- availability -->
-<section class="availability">
+<section class="availability" id="availability" style="display: none;">
 
     <form action="/reserva1", method="post">
 
@@ -92,31 +92,31 @@
  
     <div class="room-slider">
  
-       <div class="room-slide slide">
-          <div class="image">
-             <span class="price">1500,00/noite</span>
-             <img src="img/quarto1.png" alt="">
-          </div>
-          <div class="content">
-             <h3>Quarto Silver casal</h3>
-             <p>Quarto perfeito para sua viagem</p>
-             <p>14 metros quadrados</p>
-             <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-             </div>
-             <a href="#" class="btn">Agende agora</a>
-          </div>
-       </div>
+        <div class="room-slide slide">
+            <div class="image">
+                <span class="price">1500,00/noite</span>
+                <img src="img/quarto1.png" alt="">
+            </div>
+            <div class="content">
+                <h3>Quarto Silver casal</h3>
+                <p>Quarto perfeito para sua viagem</p>
+                <p>14 metros quadrados</p>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <a href="#" class="btn" onclick="toggleAvailability()">Agende agora</a>
+            </div>
+        </div>
  
        <div class="room-slide slide">
           <div class="image">
              <span class="price">1000,00/noite</span>
              <img src="img/quarto2.png" alt="">
-          </div>
+            </div>
           <div class="content">
             <h3>Quarto Silver individual</h3>
             <p>Quarto perfeito para sua viagem</p>
@@ -128,13 +128,15 @@
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star-half-alt"></i>
              </div>
-             <a href="#" class="btn">Agende agora</a>
+             <a href="#" class="btn" onclick="toggleAvailability()">Agende agora</a>
           </div>
        </div>
  
     </div>
  
    </section>
+
+   <script src="js/click.js"></script>
  
    <!-- end -->
 

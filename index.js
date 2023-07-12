@@ -143,12 +143,7 @@ app.get("/contato", function(req, res){
 });
 
 app.get("/hoteis", function(req, res){
-    if(req.session.login){
-      res.sendFile(__dirname + "/views/hoteis.html");
-    }
-    else{
-      res.redirect('/entrar');
-    }
+    res.sendFile(__dirname + "/views/hoteis.html");
 });
 
 app.get('/reserva1', function(req, res){
@@ -156,7 +151,7 @@ app.get('/reserva1', function(req, res){
     res.sendFile(__dirname + "/views/vilamar1.html");
   }
   else{
-    res.redirect('/');
+    res.redirect('/entrar');
   }
 })
 
@@ -182,7 +177,7 @@ app.get('/reserva2', function(req, res){
     res.sendFile(__dirname + "/views/vilamar2.html");
   }
   else{
-    res.redirect('/');
+    res.redirect('/entrar');
   }
 })
 
@@ -191,7 +186,7 @@ app.get('/reserva3', function(req, res){
     res.sendFile(__dirname + "/views/vilamar3.html");
   }
   else{
-    res.redirect('/');
+    res.redirect('/entrar');
   }
 })
 
