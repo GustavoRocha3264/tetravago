@@ -134,6 +134,7 @@ app.get('/usuario', (req, res) => {
         res.render(__dirname + '/views/usuario', {login: nome});
       }
     })
+    connection.query('SELECT')
   }
   else{
     res.redirect('/entrar');
@@ -162,22 +163,17 @@ app.post('/reserva1', async function(req, res) {
   const checkOut = req.body.checkOut;
   const roomId = req.body.roomId;
 
-  console.log(checkIn);
-  console.log(checkOut);
-  console.log(roomId);
-/*
   if(compareDates(checkIn, checkOut)){
     try {
       const reservationID = await generateUniqueReservationId(connection);
   
-      await createReservation(connection, reservationID, "pendente", checkIn, checkOut, req.session.login);
+      await createReservation(connection, reservationID, "pendente", checkIn, checkOut, req.session.login, roomId);
       res.send('Reservation created successfully.');
     } catch (error) {
       console.error('Error creating reservation:', error);
       res.status(500).send('Error creating reservation.');
     }
   }
-  */
 });
 
 app.get('/reserva2', function(req, res){
@@ -189,14 +185,22 @@ app.get('/reserva2', function(req, res){
   }
 })
 
-app.post('/reserva2', function(req, res){
+app.post('/reserva2', async function(req, res){
   const checkIn = req.body.checkIn;
   const checkOut = req.body.checkOut;
   const roomId = req.body.roomId;
-
-  console.log(checkIn);
-  console.log(checkOut);
-  console.log(roomId);
+  
+  if(compareDates(checkIn, checkOut)){
+    try {
+      const reservationID = await generateUniqueReservationId(connection);
+  
+      await createReservation(connection, reservationID, "pendente", checkIn, checkOut, req.session.login, roomId);
+      res.send('Reservation created successfully.');
+    } catch (error) {
+      console.error('Error creating reservation:', error);
+      res.status(500).send('Error creating reservation.');
+    }
+  }
 })
 
 app.get('/reserva3', function(req, res){
@@ -208,14 +212,22 @@ app.get('/reserva3', function(req, res){
   }
 })
 
-app.post('/reserva3', function(req, res){
+app.post('/reserva3', async function(req, res){
   const checkIn = req.body.checkIn;
   const checkOut = req.body.checkOut;
   const roomId = req.body.roomId;
-
-  console.log(checkIn);
-  console.log(checkOut);
-  console.log(roomId);
+  
+  if(compareDates(checkIn, checkOut)){
+    try {
+      const reservationID = await generateUniqueReservationId(connection);
+  
+      await createReservation(connection, reservationID, "pendente", checkIn, checkOut, req.session.login, roomId);
+      res.send('Reservation created successfully.');
+    } catch (error) {
+      console.error('Error creating reservation:', error);
+      res.status(500).send('Error creating reservation.');
+    }
+  }
 })
 
 app.get("/sobre", function(req, res){
