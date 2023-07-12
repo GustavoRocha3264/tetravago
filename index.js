@@ -141,6 +141,11 @@ app.get('/usuario', (req, res) => {
   }
 });
 
+app.post('/logout', function(req, res){
+  req.session.login = null;
+  res.redirect('/entrar');
+})
+
 app.get("/contato", function(req, res){
     res.sendFile(__dirname + "/views/contato.html");
 });

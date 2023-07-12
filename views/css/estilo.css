@@ -435,8 +435,8 @@ footer {
 }
 
 /* Estilos para a barra de saída */
-.barra_top a {
-  color: var(--cor2);
+.barra_top button {
+  color: var(--cor1);
   text-decoration: none;
   font-size: 2.5vw;
   transition: color 0.3s ease;
@@ -444,7 +444,7 @@ footer {
   font-weight: 700;
 }
 
-.barra_top a:hover {
+.barra_top button:hover {
   color: red;
 }
 
@@ -1040,6 +1040,22 @@ nav ul li a:hover {
   background-color: #0056b3;
 }
 
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
 /* media queries */
 
 @media (max-width:991px){
@@ -1113,4 +1129,5 @@ nav ul li a:hover {
   text-align: justify;
   text-indent: 20px; /* Ajuste o valor do recuo conforme desejado */
 }
+
 
