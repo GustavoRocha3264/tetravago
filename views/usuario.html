@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link para o arquivo CSS do Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <title>TetraVago</title>
     <link rel="stylesheet" href="css/estilo.css">
     <link rel="shortcut icon" href="img/logo2.png" type="image/x-icon">
@@ -19,29 +21,43 @@
                 <li><a href="hoteis">HOTEIS</a></li>
                 <li><a href="sobre">SOBRE</a></li>
                 <li><a href="cadastro">CADASTRAR</a></li>
-                <li><a href="entrar">LOGIN</a></li>            
+                <li><a href="entrar">LOGIN</a></li>   
+                <li>
+                    <a href="usuario">
+                        <i class="fas fa-user user-icon"></i> <!-- Ícone de usuário com a classe "user-icon" -->
+                        
+                    </a>
+                </li>
+    
             </ul>
         </nav>
     </header>
+
+    <!-- Conteúdo do usuário -->
+    <section class="barra_top">
+        <div class="barra">
+            <h1>Área do Usuário</h1>
+        </div>
+
+        <div class="barra">
+            <a href="index">SAIR</a>
+        </div>
+    </section>
+
+    <section class="usuario">
+        <h2>Olá, <%= login %></h2>
+        <p>Seja bem-vindo ao TetraVago</p>
+    </section>
+
+    <section class="reservas">
+        <h3>Suas Reservas</h3>
+        <!-- Aqui você pode adicionar a lista de reservas do usuário -->
+        <ul>
+            <li>Reserva 1</li>
+            <li>Reserva 2</li>
+            <li>Reserva 3</li>
+        </ul>
+    </section>
+
 </body>
-
-<!-- Conteúdo do usuario -->
-<section class="barra_top">
-    <div class="barra">
-        <h1>Área do Usuário</h1>
-    </div>
-
-    <div class="barra">
-        <a href="index">SAIR</a>
-    </div>
-
-</section>
-
-<section class="usuario">
-    <h2>Olá, <%= login %></h2>
-    <p>Seja Bem-vindo ao TetraVago</p>
-</section>
-
-
-
 </html>

@@ -102,6 +102,15 @@ main {
   width: 100%;
   margin: 0 auto;
 }
+/* FORMATAÇÃO DO ICONE */
+
+.user-icon {
+  background-color:var(--cor6); /* Cor de fundo desejada */
+  border-radius: 50%; /* Transforma o ícone em um círculo */
+  color: var(--cor4); /* Cor do ícone */
+  padding: 5px; /* Adiciona um espaçamento interno ao redor do ícone */
+  font-size: 15px;
+}
 
 /* FORMATAÇÃO DOS CARDS HOTEIS */
 .cards {
@@ -446,6 +455,52 @@ footer {
   font-weight: 700;
 }
 
+/* Estilos para a área das reservas */
+.reservas {
+  margin-top: 50px;
+  text-align: left;
+  background-color: var(--cor2);
+  padding: 2vw;
+  border-radius: 10px;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.reservas h3 {
+  font-size: 24px;
+  color: var(--cor1);
+  margin-top: 0;
+  background-color: var(--cor2);
+  padding: 10px;
+  border-radius: 5px;
+  color: var(--cor1);
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  font-weight: bold;
+}
+
+.reservas ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.reservas li {
+  font-size: 18px;
+  color: var(--cor1);
+  margin-bottom: 10px;
+}
+
+.reservas li::before {
+  content: "\2022";
+  color: var(--secondary);
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -0.15em;
+  margin-right: 0.15em;
+}
 
 /* Estilos para a seção dos hoteis */
 .banner {
@@ -937,9 +992,17 @@ section{
 
 /* end */
 
+/* Estilo para os links de navegação */
+nav ul li a {
+  color: var(--cor2);
+  text-decoration: none;
+}
 
+nav ul li a:hover {
+  color: var(--secondary);
+}
 
-
+/* end */
 
 /* media queries */
 
