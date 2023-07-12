@@ -42,8 +42,6 @@ app.use('/images', express.static(__dirname + '/views/images'));
 
 app.use('/js', express.static(__dirname + '/views/js'));
 
-app.use('/admin', express.static(__dirname + '/views/admin'));
-
 app.use(session({secret: 'd321y9831hd10923uhjhnl', resave: true, saveUninitialized: true}))
 
 app.get('/', function(req, res){
@@ -172,8 +170,8 @@ app.post('/reserva1', async function(req, res) {
     try {
       const reservationID = await generateUniqueReservationId(connection);
   
-      await createReservation(connection, reservationID, "pendente", checkIn, checkOut, req.session.login, roomId);
-      res.send('Reservation created successfully.');
+      await createReservation(connection, reservationID, "efetuada", checkIn, checkOut, req.session.login, roomId);
+      res.redirect('/confirma');
     } catch (error) {
       console.error('Error creating reservation:', error);
       res.status(500).send('Error creating reservation.');
@@ -199,8 +197,8 @@ app.post('/reserva2', async function(req, res){
     try {
       const reservationID = await generateUniqueReservationId(connection);
   
-      await createReservation(connection, reservationID, "pendente", checkIn, checkOut, req.session.login, roomId);
-      res.send('Reservation created successfully.');
+      await createReservation(connection, reservationID, "efetuada", checkIn, checkOut, req.session.login, roomId);
+      res.redirect('/confirma');
     } catch (error) {
       console.error('Error creating reservation:', error);
       res.status(500).send('Error creating reservation.');
@@ -226,8 +224,8 @@ app.post('/reserva3', async function(req, res){
     try {
       const reservationID = await generateUniqueReservationId(connection);
   
-      await createReservation(connection, reservationID, "pendente", checkIn, checkOut, req.session.login, roomId);
-      res.send('Reservation created successfully.');
+      await createReservation(connection, reservationID, "efetuada", checkIn, checkOut, req.session.login, roomId);
+      res.redirect('/confirma');
     } catch (error) {
       console.error('Error creating reservation:', error);
       res.status(500).send('Error creating reservation.');
@@ -237,10 +235,6 @@ app.post('/reserva3', async function(req, res){
 
 app.get("/sobre", function(req, res){
     res.sendFile(__dirname + "/views/sobre.html");
-});
-
-app.get("/admin", function(req, res){
-    res.sendFile(__dirname + "/views/admin/login.html");
 });
 
 app.get("/reservas", function(req, res){

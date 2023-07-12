@@ -69,6 +69,7 @@ function createHTML(connection) {
           `;
           htmlString += `<td style="font-size: 12px; font-family: Arial;">${row.status}</td>
           `;
+          htmlString += `<br>`;
         });
   
         // Fecha a seção HTML de reservas
