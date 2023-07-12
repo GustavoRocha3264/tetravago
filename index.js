@@ -189,6 +189,16 @@ app.get('/reserva2', function(req, res){
   }
 })
 
+app.post('/reserva2', function(req, res){
+  const checkIn = req.body.checkIn;
+  const checkOut = req.body.checkOut;
+  const roomId = req.body.roomId;
+
+  console.log(checkIn);
+  console.log(checkOut);
+  console.log(roomId);
+})
+
 app.get('/reserva3', function(req, res){
   if(req.session.login){
     res.sendFile(__dirname + "/views/vilamar3.html");
@@ -196,6 +206,16 @@ app.get('/reserva3', function(req, res){
   else{
     res.redirect('/entrar');
   }
+})
+
+app.post('/reserva3', function(req, res){
+  const checkIn = req.body.checkIn;
+  const checkOut = req.body.checkOut;
+  const roomId = req.body.roomId;
+
+  console.log(checkIn);
+  console.log(checkOut);
+  console.log(roomId);
 })
 
 app.get("/sobre", function(req, res){
