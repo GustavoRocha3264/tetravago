@@ -48,81 +48,80 @@
 <body>
 
    <!-- availability -->
-<section class="availability">
-
-    <form action="/reserva2", method="post">
-
-    <div class="box">
-        <p>check in [entrada] <span>*</span></p>
-        <input type="date" class="input" name="checkIn">
+   <section class="room" id="room">
+    <h1 class="heading">Quartos</h1>
+    <div class="room-slider">
+        <div class="room-slide slide">
+            <div class="image">
+                <span class="price">3000,00/noite</span>
+                <img src="img/quarto1.png" alt="">
+            </div>
+            <div class="content">
+                <h3>Quarto Gold casal</h3>
+                <p>Quarto perfeito para sua viagem</p>
+                <p>25 metros quadrados</p>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <button class="btn" onclick="toggleAvailability(3)">Agende agora</button>
+            </div>
+        </div>
     </div>
+</section>
 
+<!-- availability -->
+<section class="availability" id="availability" style="display: none;">
+    <div class="box">
+        <p>Quarto selecionado: <span id="selectedRoom"></span></p>
+        <p>check in [entrada] <span>*</span></p>
+        <input type="date" class="input" id="checkIn" required>
+    </div>
     <div class="box">
         <p>check out [saida]<span>*</span></p>
-        <input type="date" class="input" name="checkOut">
+        <input type="date" class="input" id="checkOut" required>
     </div>
-
-    <input type="submit" value="verificar" class="btn">
-
-    </form>
-    <!-- end -->
-
+    <input type="hidden" id="roomIdInput" name="roomId">
+    <input type="button" value="Verificar" class="btn" onclick="submitReservation()">
 </section>
-   <!-- about -->
 
-   <section class="about" id="about">
+<script>
+    function toggleAvailability(roomId) {
+        var availabilitySection = document.getElementById("availability");
+        var selectedRoomElement = document.getElementById("selectedRoom");
+        var roomIdInput = document.getElementById("roomIdInput");
 
-      <div class="row">
-         <div class="content">
-            <h3>Hotel Vila Mar Gold</h3>
-            <p class="texto-justificado">
-               &emsp; Bem-vindo ao Hotel Vila Mar Gold! Nossa hospedagem oferece quartos aconchegantes e confortáveis, perfeitos para tornar a sua estadia memorável. Temos opções de quartos de casal e individual, para atender às suas necessidades e preferências. <br>
-               &emsp; Os quartos de casal do Hotel Vila Mar Gold são espaçosos e elegantemente decorados, criando um ambiente romântico e relaxante. Cada quarto é equipado com uma cama confortável, ideal para uma boa noite de sono. Além disso, você encontrará comodidades como ar-condicionado, televisão de tela plana, frigobar e uma área de estar aconchegante. O banheiro privativo é moderno e bem equipado, com chuveiro, secador de cabelo e produtos de banho de qualidade.<br>
-               &emsp; Para os hóspedes que preferem um espaço mais privativo, temos quartos individuais projetados para proporcionar conforto e tranquilidade. Esses quartos são decorados com bom gosto e possuem uma cama confortável, área de trabalho, televisão de tela plana e frigobar. O banheiro privativo também é equipado com todas as comodidades necessárias para tornar a sua estadia agradável.<br>
-               &emsp; Independentemente do tipo de quarto escolhido, os hóspedes do Hotel Vila Mar Gold podem desfrutar de serviços de limpeza diária e acesso Wi-Fi gratuito em todas as áreas. Além disso, nosso hotel oferece uma equipe amigável e atenciosa, pronta para atender a todas as suas necessidades e tornar a sua estadia agradável. <br>
-               &emsp; Ao se hospedar no Hotel Vila Mar Gold, você também terá acesso a todas as comodidades do hotel, como piscina, academia, restaurante e bar. Nossa localização privilegiada próximo à praia oferece uma bela vista e fácil acesso a diversas atrações turísticas da região.<br>
-               &emsp; Esperamos recebê-lo em breve no Hotel Vila Mar Gold, onde o conforto, a hospitalidade e a qualidade se unem para proporcionar uma experiência única durante a sua estadia.<br>
-            </p>
-         </div>
+        // Define o texto do quarto selecionado
+        if(roomId == 3){
+            selectedRoomElement.textContent = "Quarto de casal";
+        }
 
-      </div>
+        roomIdInput.value = roomId;
+        availabilitySection.style.display = "block";
+    }
 
-   </section>
+    function submitReservation() {
+        var checkIn = document.getElementById("checkIn").value;
+        var checkOut = document.getElementById("checkOut").value;
+        var roomId = document.getElementById("roomIdInput").value;
 
-   <!-- end -->
-
-   <!-- room -->
-
-   <section class="room" id="room">
-
-    <h1 class="heading">Quartos</h1>
- 
-    <div class="room-slider">
- 
-       <div class="room-slide slide">
-          <div class="image">
-             <span class="price">3000,00/noite</span>
-             <img src="img/quarto1.png" alt="">
-          </div>
-          <div class="content">
-             <h3>Quarto Gold</h3>
-             <p>Quarto perfeito para sua viagem</p>
-             <p>25 metros quadrados</p>
-             <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-             </div>
-             <a href="#" class="btn">Agende agora</a>
-          </div>
-       </div>
- 
-
-    </div>
- 
-   </section>
+        // Enviar os dados para o servidor (usando AJAX, formulário, etc.)
+        // Aqui está um exemplo usando AJAX:
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/reserva2", true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                console.log("Reserva enviada com sucesso!");
+            }
+        };
+        var data = "checkIn=" + encodeURIComponent(checkIn) + "&checkOut=" + encodeURIComponent(checkOut) + "&roomId=" + encodeURIComponent(roomId);
+        xhr.send(data);
+    }
+</script>
  
    <!-- end -->
 

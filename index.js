@@ -136,7 +136,7 @@ app.get('/usuario', (req, res) => {
     })
   }
   else{
-    res.redirect('/index');
+    res.redirect('/entrar');
   }
 });
 
