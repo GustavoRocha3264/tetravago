@@ -31,6 +31,8 @@ app.set('view engine', 'html');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(express.json());
+
 app.use('/css', express.static(__dirname + '/views/css'));
 
 app.use('/img', express.static(__dirname + '/views/img'));
@@ -158,7 +160,12 @@ app.get('/reserva1', function(req, res){
 app.post('/reserva1', async function(req, res) {
   const checkIn = req.body.checkIn;
   const checkOut = req.body.checkOut;
+  const roomId = req.body.roomId;
 
+  console.log(checkIn);
+  console.log(checkOut);
+  console.log(roomId);
+/*
   if(compareDates(checkIn, checkOut)){
     try {
       const reservationID = await generateUniqueReservationId(connection);
@@ -170,6 +177,7 @@ app.post('/reserva1', async function(req, res) {
       res.status(500).send('Error creating reservation.');
     }
   }
+  */
 });
 
 app.get('/reserva2', function(req, res){

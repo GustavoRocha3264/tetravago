@@ -632,7 +632,7 @@ section{
 
 /* availability */
 
-.availability form{
+.availability {
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
@@ -641,16 +641,16 @@ section{
   border-radius: .5rem;
 }
 
-.availability form .box{
+.availability .box{
   flex: 1 1 20rem;
 }
 
-.availability form .box p{
+.availability .box p{
   font-size: 2rem;
   color: var(--primary);
 }
 
-.availability form .box .input{
+.availability .box .input{
   width: 100%;
   padding: 1rem;
   font-size: 1.8rem;
