@@ -102,6 +102,15 @@ main {
   width: 100%;
   margin: 0 auto;
 }
+/* FORMATAÇÃO DO ICONE */
+
+.user-icon {
+  background-color:var(--cor6); /* Cor de fundo desejada */
+  border-radius: 50%; /* Transforma o ícone em um círculo */
+  color: var(--cor4); /* Cor do ícone */
+  padding: 5px; /* Adiciona um espaçamento interno ao redor do ícone */
+  font-size: 15px;
+}
 
 /* FORMATAÇÃO DOS CARDS HOTEIS */
 .cards {
