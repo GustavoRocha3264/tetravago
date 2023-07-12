@@ -115,7 +115,13 @@
         var roomIdInput = document.getElementById("roomIdInput");
 
         // Define o texto do quarto selecionado
-        selectedRoomElement.textContent = "Quarto " + roomId;
+        if(roomId == 1){
+            selectedRoomElement.textContent = "Quarto de casal";
+        }
+        else{
+            selectedRoomElement.textContent = "Quarto individual";
+        }
+        
 
         roomIdInput.value = roomId;
         availabilitySection.style.display = "block";
